@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.xzh.gdsbcw-cxf</groupId>
-  <artifactId>gdsbcw-cxf</artifactId>
+  <groupId>com.xzh.webService-cxf</groupId>
+  <artifactId>webService-cxf</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>gdsbcw-cxf</name>
+  <name>webService-cxf</name>
   <url>http://maven.apache.org</url>
 
   <!-- ##########依赖属性参数配置 start############### -->
