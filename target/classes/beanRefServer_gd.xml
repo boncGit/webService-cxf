@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- Import Apache CXF Bean Definition -->
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <!-- 服务发布配置：地址 + 实现类 -->
+
+    <!-- SurveyService -->
+    <!-- 声明web服务的实现类 -->
+    <bean id="BankTransaction" class="gdsbcw_cxf.BankTransactionIMplementation"></bean>
+
+    <!-- Expose SurveyWebService  http://localhost:8080/sbcw_cxf/web_bank_transaction?wsdl-->
+    <jaxws:server id="WebBankTransaction" serviceClass="gdsbcw_cxf.BankTransaction" address="/sbcw_cxf/web_bank_transaction">
+        <jaxws:serviceBean>
+            <ref bean="BankTransaction"/> <!-- 要暴露的 bean 的引用 -->
+        </jaxws:serviceBean>
+
+        <!--  接收报文拦截器，可以自定义接收到报文的格式-->
+        <!--<jaxws:inInterceptors>-->
+            <!--<bean class="utils.CAbstractPhaseInterceptor">-->
+                <!--<constructor-arg>-->
+                    <!--<value>receive</value>-->
+                <!--</constructor-arg>-->
+            <!--</bean>-->
+        <!--</jaxws:inInterceptors>-->
+
+        <!--  发送报文拦截器，可以自定义发送出去报文的格式-->
+        <!--<jaxws:outInterceptors>-->
+            <!--<bean class="utils.ArtifactOutInterceptor"/>-->
+        <!--</jaxws:outInterceptors>-->
+    </jaxws:server>
+</beans>
